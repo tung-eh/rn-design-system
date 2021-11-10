@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "yarn workspace @rn-design-system/documentation dev"
+    "start": "yarn workspace @rn-design-system/documentation dev",
+    "doc:build": "yarn workspace @rn-design-system/documentation build"
   },
   "devDependencies": {}
 }

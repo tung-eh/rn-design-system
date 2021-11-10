@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "rn-hero-design",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "yarn workspace @rn-design-system/documentation dev"
+  },
+  "devDependencies": {}
+}

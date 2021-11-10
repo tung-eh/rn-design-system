@@ -1,0 +1,25 @@
+---
+name: Button
+menu: Components
+---
+
+import { Playground } from "docz";
+import { Button } from "rn-hero-design";
+import { IPhoneX } from "./DeviceFrame";
+import { StyleSheet } from "react-native";
+
+# Button
+
+## Basic usage
+
+<Playground>
+  <IPhoneX screenStyle={{ padding: 16, paddingTop: 48 }}>
+    <Button text="Press me" wrapperStyle={{ marginBottom: 16 }} />
+    <Button
+      text="Press me"
+      color="tomato"
+      wrapperStyle={{ marginBottom: 16 }}
+    />
+    <Button text="Disabled" disabled />
+  </IPhoneX>
+</Playground>

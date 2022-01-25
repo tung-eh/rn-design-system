@@ -2,7 +2,8 @@
   "private": true,
   "name": "rn-hero-design",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/docusaurus/plugins/*"
   ],
   "scripts": {
     "start": "yarn workspace @rn-design-system/docusaurus start",

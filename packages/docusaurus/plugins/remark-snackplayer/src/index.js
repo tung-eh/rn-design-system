@@ -25,13 +25,34 @@ const processNode = (node, parent) => {
         ? decodeURIComponent(params.description)
         : "Example usage";
       const sampleCode = node.value;
-      const encodedSampleCode = encodeURIComponent(sampleCode);
       const dependencies = params.dependencies || "";
       const platform = params.platform || "web";
       const supportedPlatforms = params.supportedPlatforms || "ios,android,web";
       const theme = params.theme || "light";
       const preview = params.preview || "true";
       const loading = params.loading || "lazy";
+
+      const files = {
+        "App.js": {
+          type: "CODE",
+          contents: sampleCode,
+        },
+        "rn-design-system.js": {
+          type: "CODE",
+          contents: `
+import React from "react";
+import { Button as NativeButton, View, StyleSheet } from "react-native";
+
+const Button = ({ text, wrapperStyle = {}, ...props }) => (
+  <View style={StyleSheet.flatten([wrapperStyle])}>
+    <NativeButton title={text} {...props} />
+  </View>
+);
+
+export { Button };
+          `,
+        },
+      };
 
       // Generate Node for SnackPlayer
       // See https://github.com/expo/snack/blob/main/docs/embedding-snacks.md
@@ -40,7 +61,8 @@ const processNode = (node, parent) => {
           <div
             data-snack-name="${name}"
             data-snack-description="${description}"
-            data-snack-code="${encodedSampleCode}"
+            data-snack-code=""
+            data-snack-files="${encodeURIComponent(JSON.stringify(files))}"
             data-snack-dependencies="${dependencies}"
             data-snack-platform="${platform}"
             data-snack-supported-platforms="${supportedPlatforms}"
